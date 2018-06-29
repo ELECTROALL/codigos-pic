@@ -1,0 +1,67 @@
+# include <16f877A.h>
+# fuses NOWDT, XT, NOPUT, NOCPD , NOBROWNOUT, NOPROTECT, NOLVP, NODEBUG, NOWRT
+# use DELAY (CLOCK =4M)
+# use STANDARD_IO (a,b,c,d,e)
+# use RS232 (BAUD=9600, BITS=8, PARITY=N, RCV=PIN_C7, XMIT=PIN_C6)
+// LUCES DE LAS HABITACIONES
+int sala              =PIN_A0;
+int cocina            =PIN_A1;
+int dormitorioA1      =PIN_A2;
+int dormitorioA2      =PIN_A3; 
+int dormitorioB1      =PIN_A5;
+int dormitorioB2      =PIN_E0;
+// TOMA CORRIENTES
+int toma_sala         =PIN_B0;
+int toma_cocina       =PIN_B1;  
+int toma_dormitorioA  =PIN_B2;
+int toma_dormitorioB  =PIN_B3;
+// VARIABLE PARA EL GETC()
+char valor ;
+void main(){
+    while(true){
+    valor =getc();
+           switch (valor){
+                  case  'A': output_high(sala);
+                   break;
+                  case  'a': output_low (sala);
+                  break;
+                   case  'B': output_high(cocina);
+                  break;
+                  case  'b': output_low (cocina);
+                  break;
+                   case  'C': output_high(dormitorioA1);
+                  break;
+                  case  'c': output_low (dormitorioA1);
+                  break;
+                   case  'D': output_high(dormitorioA2);
+                  break;
+                  case  'd': output_low (dormitorioA2);
+                  break;
+                   case  'E': output_high(dormitorioB1);
+                  break;
+                  case  'e': output_low (dormitorioB1);
+                  break;
+                   case  'F': output_high(dormitorioB2);
+                  break;
+                  case  'f': output_low (dormitorioB2);
+                  break;
+                   case  'G': output_high(toma_sala);
+                  break;
+                  case  'g': output_low (toma_sala);
+                  break;
+                   case  'H': output_high(toma_cocina);
+                  break;
+                  case  'h': output_low (toma_cocina);
+                  break;
+                   case  'I': output_high(toma_dormitorioA);
+                  break;
+                  case  'i': output_low (toma_dormitorioA);
+                  break;
+                   case  'J': output_high(toma_dormitorioB);
+                  break;
+                  case  'j': output_low (toma_dormitorioB);
+                  break;
+                  
+                         }
+           }
+}
