@@ -1,0 +1,44 @@
+
+#include <16F877a.h>
+#FUSES XT,NOWDT,NOPROTECT,PUT,NOBROWNOUT,NOLVP     
+#use delay(clock=4000000)
+                          
+#include <lcd.c>
+
+
+float distancia, tiempo;
+#define trig pin_B1
+#define echo pin_B0
+#USE standard_io(b)
+
+void main()
+{
+   lcd_init();                             
+printf(LCD_PUTC, "\f WELCOME.");
+delay_ms(1000);
+printf(LCD_PUTC, "\f TO ELECTROALL..");
+delay_ms(1000);                           
+setup_timer_1(T1_INTERNAL|T1_DIV_BY_1);
+
+while(true)
+{
+
+output_high(trig);                   
+delay_us(10);                       
+output_low(trig);
+while(!input(echo))                     
+{}
+set_timer1(0);                         
+while(input(echo))                     
+{}
+tiempo=get_timer1();
+distancia=(tiempo/2)/(29.15);
+             lcd_gotoxy(1,1);
+             printf(lcd_putc,"Distancia =%f",distancia);
+             lcd_gotoxy(2,2);
+             printf(lcd_putc, "tiempo =%f", tiempo);
+             delay_ms(500);
+ 
+ 
+}
+}
