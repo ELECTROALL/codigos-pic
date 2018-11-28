@@ -1,0 +1,23 @@
+/*
+                CREADO POR  : ELECTROALL
+                FACEBOOK    : https://www.facebook.com/ChecharlsElEctroall/
+                PÁGINA      : http://che-charls-electroall.webnode.es/
+                TWITTER     : https://twitter.com/ChCharlsELECTRO
+           ________________________________________________________
+                   {==[=======> (ENTRADA DIGITAL) <=======]==}
+           ________________________________________________________
+*/
+# include <16f628a.h>
+# fuses xt, nowdt
+# use delay (clock=4M)
+# use standard_io (b,a)
+# define led  PIN_B3
+# define entrada_digital PIN_B0
+int1 valor_entrada;
+
+void main(){
+while (true){
+valor_entrada = input(entrada_digital);
+if (valor_entrada ==1){
+output_high (led);
+}
