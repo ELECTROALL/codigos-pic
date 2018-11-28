@@ -1,0 +1,36 @@
+/*
+                CREADO POR  : ELECTROALL
+                FACEBOOK    : https://www.facebook.com/ChecharlsElEctroall/
+                PÁGINA      : http://che-charls-electroall.webnode.es/
+                TWITTER     : https://twitter.com/ChCharlsELECTRO
+           ________________________________________________________
+             {==[=======> (ENTRADA & SALIDA ANALÓGICA) <=======]==}
+           ________________________________________________________
+*/
+
+
+# include <16f877a.h>             //incluimos el codigo del pic
+# device adc=8                    //Habilitamos el disppositivos a 8bits
+# fuses hs, wdt, brownout,NOWDT   //incluimos los fusibles necesarios
+# use delay (clock = 8M)          //usamos reloj de 8Mhz
+
+# use standard_io (a,b,c,d)       //usamos la configuracion estandar
+float  bits_analog;               
+
+void main (){
+
+setup_adc_ports (AN0_AN1_AN3);  // habilitamos los puetos analogicos
+setup_adc(adc_clock_div_16);   // habilitamos los puetos analogicos
+setup_ccp1(CCP_PWM);           // habilitamos el puerto ccp1 del pic
+setup_timer_2(T2_DIV_BY_16, 255,1); // usamos el timer2 
+      while (true){
+      
+      set_adc_channel(0);    
+      delay_ms (2);                  // Selecciono el canal 0 (RA0)
+      bits_analog = read_adc();     
+       delay_ms (2);
+      set_pwm1_duty (bits_analog);  // manifestamos los valores de AN0 en cc_pwm)
+       delay_ms (2);
+       
+      }
+}      
