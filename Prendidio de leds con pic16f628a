@@ -1,0 +1,77 @@
+# include <16f628a.h>
+# fuses  nowdt, xt NOPUT, NOPROTECT, NOBROWNOUT, NOLVP, NOCPD
+# use delay (clock=4000000)
+# use standard_io(a,b)
+# define led1 PIN_B0
+# define led2 PIN_B1
+# define led3 PIN_B2
+# define led4 PIN_B3
+# define led5 PIN_B4
+# define led6 PIN_B5
+# define led7 PIN_A0
+# define led8 PIN_A1
+# define led9 PIN_A2
+# define led10 PIN_A3
+void main(){
+ while (true){
+output_high(led1);
+delay_ms(500);
+
+output_high(led2);
+delay_ms(500);
+
+output_high(led3);
+delay_ms(500);
+
+output_high(led4);
+delay_ms(5000);
+
+output_high(led5);
+delay_ms(500);
+
+output_high(led6);
+delay_ms(500);
+
+output_high(led7);
+delay_ms(500);
+
+output_high(led8);
+delay_ms(500);
+
+output_high(led9);
+delay_ms(500);
+
+output_high(led10);
+delay_ms(500);
+
+output_low(led10);
+delay_ms(500);
+
+output_low(led9);
+delay_ms(500);
+
+output_low(led8);
+delay_ms(500);
+
+output_low(led7);
+delay_ms(500);
+
+output_low(led6);
+delay_ms(500);
+
+output_low(led5);
+delay_ms(500);
+
+output_low(led4);
+delay_ms(500);
+
+output_low(led3);
+delay_ms(500);
+
+output_low(led2);
+delay_ms(500);
+
+output_low(led1);
+delay_ms(500);
+}
+}
